@@ -1,5 +1,4 @@
 import * as React from 'react';
-import './style.css';
 
 import Robot from './Robot';
 
@@ -11,11 +10,10 @@ export default function App() {
   }
 
   return (
-    <div>
-      <Robot />
-      {/* {robots.map((_, index) => {
-        return <Robot key={index} />;
-      })} */}
+    <div>                
+      {robots.map((_) => {
+        return <Robot key={Math.random()} />;
+      })}
     </div>
   );
 }

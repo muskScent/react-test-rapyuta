@@ -1,10 +1,10 @@
-import * as React from 'react';
+import React from 'react';
 import { useState, useEffect } from 'react';
 import { getRandomInt } from './Utils';
 
 export default function Robot() {
-  const [x, setX] = useState(0);
-  const [y, setY] = useState(0);
+  const [x, setX] = useState(getRandomInt(0, 100));
+  const [y, setY] = useState(getRandomInt(0, 100));
 
   const positionInterval = setInterval(() => {
     setX(getRandomInt(0, 100));
@@ -12,10 +12,11 @@ export default function Robot() {
   }, 1000);
 
   useEffect(() => {
+    clearInterval(positionInterval);
     return () => {
       clearInterval(positionInterval);
     };
-  }, []);
+  }, [x, y]);
 
   return (
     <div
